@@ -1,0 +1,73 @@
+@startuml "aws_group_icons"
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v11.1/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+
+!include AWSPuml/GroupIcons/Cloud.puml
+!include AWSPuml/GroupIcons/VirtualPrivateCloudVPC.puml
+!include AWSPuml/GroupIcons/VPCSubnetPrivate.puml
+!include AWSPuml/GroupIcons/VPCSubnetPublic.puml
+
+skinparam PackageTitleAlignment Left
+
+!unquoted procedure AWSGroupColoring($g_stereo, $g_color)
+  skinparam rectangle<<$g_stereo>> {
+    BackgroundColor White
+    borderColor $g_color
+    shadowing false
+  }
+!endprocedure
+
+!unquoted function $getDashed($g_dashed)
+  !if %lower($g_dashed) == "true"
+    !return '#line.dashed'
+  !else
+    !return ''
+  !endif
+!endfunction
+
+!unquoted function $getSprite($g_sprite)
+  !if %strlen($g_sprite) == 0
+    !return ''
+  !else
+    !return "<$" + $g_sprite + "{scale=.5}> "
+  !endif
+!endfunction
+
+!unquoted procedure AWSGroupEntity($g_alias, $g_label, $g_color, $g_sprite, $g_stereo, $g_dashed=false)
+rectangle "<color:$g_color>$getSprite($g_sprite)$g_label</color>" as $g_alias <<$g_stereo>> $getDashed($g_dashed)
+!endprocedure
+
+
+AWSGroupColoring(Cloud, #232F3E)
+!unquoted procedure CloudGroup(g_alias, g_label)
+AWSGroupEntity(g_alias, g_label, #232F3E, Cloud, Cloud)
+!endprocedure
+
+AWSGroupColoring(VirtualPrivateCloudVPC, #3F8624)
+!unquoted procedure VirtualPrivateCloudVPCGroup(g_alias, g_label)
+AWSGroupEntity(g_alias, g_label, #3F8624, VirtualPrivateCloudVPC, VirtualPrivateCloudVPC)
+!endprocedure
+
+AWSGroupColoring(VPCSubnetPrivate, #3F8624)
+!unquoted procedure VPCSubnetPrivateGroup(g_alias, g_label)
+AWSGroupEntity(g_alias, g_label, #3F8624, VPCSubnetPrivate, VPCSubnetPrivate)
+!endprocedure
+
+AWSGroupColoring(VPCSubnetPublic, #3B48CC)
+!unquoted procedure VPCSubnetPublicGroup(g_alias, g_label)
+AWSGroupEntity(g_alias, g_label, #3B48CC, VPCSubnetPublic, VPCSubnetPublic)
+!endprocedure
+
+AWSGroupColoring(AvalabilityZone, #03A0C7)
+!unquoted procedure AvalabilityZoneGroup(g_alias, g_label)
+AWSGroupEntity(g_alias, g_label, #03A0C7, "", AvalabilityZone, true)
+!endprocedure
+
+AWSGroupColoring(ManagedServices, #232F3E)
+!unquoted procedure ManagedServicesGroup(g_alias, g_label)
+AWSGroupEntity(g_alias, g_label, #232F3E, "", ManagedServices, true)
+!endprocedure
+
+@enduml
