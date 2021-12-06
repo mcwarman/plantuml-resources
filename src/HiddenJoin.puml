@@ -1,0 +1,13 @@
+@startuml "hidden_join"
+
+skinparam interface<<invisible>> {
+  shadowing false
+  backgroundColor transparent
+  borderColor transparent
+}
+
+!unquoted procedure HiddenJoin($p_alias)
+() "<color:transparent>a</color>" as $p_alias<<invisible>>
+!endprocedure
+
+@enduml
