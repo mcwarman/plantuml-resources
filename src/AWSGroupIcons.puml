@@ -11,21 +11,14 @@
 
 skinparam PackageTitleAlignment Left
 
-!unquoted procedure AWSGroupColoring($g_stereo, $g_color)
+!unquoted procedure AWSGroupColoring($g_stereo, $g_background_color, $g_border_color, $g_border_style)
   skinparam rectangle<<$g_stereo>> {
-    BackgroundColor White
-    borderColor $g_color
+    backgroundColor $g_background_color
+    borderColor $g_border_color
+    borderStyle $g_border_style
     shadowing false
   }
 !endprocedure
-
-!unquoted function $getDashed($g_dashed)
-  !if %lower($g_dashed) == "true"
-    !return '#line.dashed'
-  !else
-    !return ''
-  !endif
-!endfunction
 
 !unquoted function $getSprite($g_sprite)
   !if %strlen($g_sprite) == 0
@@ -35,39 +28,38 @@ skinparam PackageTitleAlignment Left
   !endif
 !endfunction
 
-!unquoted procedure AWSGroupEntity($g_alias, $g_label, $g_color, $g_sprite, $g_stereo, $g_dashed=false)
-rectangle "<color:$g_color>$getSprite($g_sprite)$g_label</color>" as $g_alias <<$g_stereo>> $getDashed($g_dashed)
+!unquoted procedure AWSGroupEntity($g_alias, $g_label, $g_color, $g_sprite, $g_stereo)
+rectangle "<color:$g_color>$getSprite($g_sprite)$g_label</color>" as $g_alias <<$g_stereo>>
 !endprocedure
 
-
-AWSGroupColoring(Cloud, #232F3E)
+AWSGroupColoring(Cloud, #FFFFFF, #232F3E, plain)
 !unquoted procedure CloudGroup(g_alias, g_label)
 AWSGroupEntity(g_alias, g_label, #232F3E, Cloud, Cloud)
 !endprocedure
 
-AWSGroupColoring(VirtualPrivateCloudVPC, #3F8624)
+AWSGroupColoring(VirtualPrivateCloudVPC, #FFFFFF, #3F8624, plain)
 !unquoted procedure VirtualPrivateCloudVPCGroup(g_alias, g_label)
 AWSGroupEntity(g_alias, g_label, #3F8624, VirtualPrivateCloudVPC, VirtualPrivateCloudVPC)
 !endprocedure
 
-AWSGroupColoring(VPCSubnetPrivate, #3F8624)
+AWSGroupColoring(VPCSubnetPrivate, #E6F2E7, Transparent, plain)
 !unquoted procedure VPCSubnetPrivateGroup(g_alias, g_label)
 AWSGroupEntity(g_alias, g_label, #3F8624, VPCSubnetPrivate, VPCSubnetPrivate)
 !endprocedure
 
-AWSGroupColoring(VPCSubnetPublic, #3B48CC)
+AWSGroupColoring(VPCSubnetPublic, #E7F2F8, Transparent, plain)
 !unquoted procedure VPCSubnetPublicGroup(g_alias, g_label)
 AWSGroupEntity(g_alias, g_label, #3B48CC, VPCSubnetPublic, VPCSubnetPublic)
 !endprocedure
 
-AWSGroupColoring(AvalabilityZone, #03A0C7)
+AWSGroupColoring(AvalabilityZone, #FFFFFF, #03A0C7, dashed)
 !unquoted procedure AvalabilityZoneGroup(g_alias, g_label)
-AWSGroupEntity(g_alias, g_label, #03A0C7, "", AvalabilityZone, true)
+AWSGroupEntity(g_alias, g_label, #03A0C7, "", AvalabilityZone)
 !endprocedure
 
-AWSGroupColoring(ManagedServices, #232F3E)
+AWSGroupColoring(ManagedServices, #FFFFFF, #232F3E, dashed)
 !unquoted procedure ManagedServicesGroup(g_alias, g_label)
-AWSGroupEntity(g_alias, g_label, #232F3E, "", ManagedServices, true)
+AWSGroupEntity(g_alias, g_label, #232F3E, "", ManagedServices)
 !endprocedure
 
 @enduml
