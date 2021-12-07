@@ -1,15 +1,4 @@
-# plantuml-resources
-
-## AWS Group Icons
-
-Is an extension of [aws-icons-for-plantuml](https://github.com/awslabs/aws-icons-for-plantuml) adding the missing groups.
-
-![AWS Group Example](https://raw.githubusercontent.com/mcwarman/plantuml-resources/main/examples/aws_group.puml)
-
-Diagram is produced from the following code:
-
-```plantuml
-@startuml
+@startuml "aws_group"
 
 !define PUMLResources https://raw.githubusercontent.com/mcwarman/plantuml-resources/main/src
 !include PUMLResources/AWSGroupIcons.puml
@@ -64,5 +53,3 @@ CloudGroup(cloud, "AWS Cloud") {
   }
 }
 @enduml
-
-```
