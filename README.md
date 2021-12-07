@@ -4,7 +4,7 @@
 
 Is an extension of [aws-icons-for-plantuml](https://github.com/awslabs/aws-icons-for-plantuml) adding the missing groups.
 
-![AWS Group Example](https://raw.githubusercontent.com/mcwarman/plantuml-resources/main/examples/aws_group.puml)
+![AWS Group Example](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/mcwarman/plantuml-resources/main/examples/aws_group.puml)
 
 Diagram is produced from the following code:
 
